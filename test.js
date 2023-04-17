@@ -42,7 +42,7 @@ const GOOGLE_CLIENT_SECRET = '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';
 passport.use(new GoogleStrategy({
     clientID: GOOGLE_CLIENT_ID,
     clientSecret: GOOGLE_CLIENT_SECRET,
-    callbackURL: "http://localhost:3000/auth/google/callback"
+    callbackURL: "http://localhost:3000/home"
 },
     function (accessToken, refreshToken, profile, done) {
         userProfile = profile;
@@ -56,8 +56,6 @@ app.get('/auth/google',
 app.get('/auth/google/callback',
     passport.authenticate('google', { failureRedirect: '/error' }),
     function (req, res) {
-        // Successful authentication, redirect success.
-        // res.redirect('/home');
     });
 
 app.listen(3000, () => {
